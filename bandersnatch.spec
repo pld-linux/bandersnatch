@@ -39,7 +39,8 @@ install -d $RPM_BUILD_ROOT%{_sbindir}
 
 cp -a frontend/* $RPM_BUILD_ROOT%{_datadir}/%{name}-frontend
 
-install %{name} $RPM_BUILD_ROOT%{_sbindir}
+install %{name} $RPM_BUILD_ROOT%{_sbindir}/%{name}1
+install %{name}2.pl $RPM_BUILD_ROOT%{_sbindir}/%{name}2
 install config.xml $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/%{name}.xml
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d/%{name}
@@ -71,6 +72,7 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc *.sql doc/*
+%dir %{_sysconfdir}/%{name}
 %attr(755,root,root) %{_sbindir}/*
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/%{name}.xml
 %attr(754,root,root) /etc/rc.d/init.d/%{name}
@@ -78,5 +80,6 @@ fi
 
 %files frontend
 %defattr(644,root,root,755)
+%dir %{_sysconfdir}/%{name}
 %{_datadir}/%{name}-frontend
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/%{name}*.cfg
