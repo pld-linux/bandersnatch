@@ -1,0 +1,68 @@
+#!/bin/sh
+#
+# bandersnatch	Logs jabber conversations
+#
+# chkconfig:	345 99 01
+# description:	bandersnatch is a jabber logger
+#		
+# processname:	bandersnatch
+# config:	
+# pidfile:
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+. /etc/sysconfig/bandersnatch
+
+# Check that networking is up.
+if is_yes "${NETWORKING}"; then
+	if [ ! -f /var/lock/subsys/network -a "$1" != stop -a "$1" != status ]; then
+		msg_network_down bandersnatch
+		exit 1
+	fi
+else
+	exit 0
+fi
+
+RETVAL=0
+# See how we were called.
+case "$1" in
+  start)
+	# Start daemons.
+	if [ ! -f /var/lock/subsys/bandersnatch ]; then
+		msg_starting bandersnatch
+		daemon bandersnatch /etc/bandersnatch/bandersnatch.xml
+		RETVAL=$?
+		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/bandersnatch
+	else
+		msg_already_running bandersnatch
+	fi
+	;;
+  stop)
+	# Stop daemons.
+	if [ -f /var/lock/subsys/bandersnatch ]; then
+		msg_stopping bandersnatch
+		killproc bandersnatch
+		rm -f /var/lock/subsys/bandersnatch >/dev/null 2>&1
+	else
+		msg_not_running bandersnatch
+	fi	
+	;;
+  restart|force-reload)
+	$0 stop
+	$0 start
+	exit $?
+	;;
+  status)
+	status bandersnatch
+	exit $?
+	;;
+  *)
+	msg_usage "$0 {start|stop|restart|force-reload|status}"
+	exit 3
+esac
+
+exit $RETVAL
