@@ -28,6 +28,9 @@ monitor the use/abuse of their Jabber servers.
 %package frontend
 Summary:	bandersnatch web frontend
 Group:		Applications/WWW
+Requires:	php-pear-HTML_Template_IT
+Requires:	php-pear-DB
+Requires:	php-pear-Auth
 
 %description frontend
 bandersnatch web frontend.
@@ -79,7 +82,7 @@ fi
 %doc *.sql doc/*
 %dir %{_sysconfdir}/%{name}
 %attr(755,root,root) %{_sbindir}/*
-%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/%{name}.xml
+%attr(640,root,nobody) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/%{name}.xml
 %attr(754,root,root) /etc/rc.d/init.d/%{name}
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/%{name}
 
@@ -87,4 +90,4 @@ fi
 %defattr(644,root,root,755)
 %dir %{_sysconfdir}/%{name}
 %{_datadir}/%{name}-frontend
-%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/%{name}*.cfg
+%attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/%{name}*.cfg
