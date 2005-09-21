@@ -5,9 +5,6 @@
 # chkconfig:	345 99 01
 # description:	bandersnatch is a jabber logger
 #		
-# processname:	bandersnatch
-# config:	
-# pidfile:
 
 # Source function library.
 . /etc/rc.d/init.d/functions
@@ -15,6 +12,7 @@
 # Source networking configuration.
 . /etc/sysconfig/network
 
+BANDERSNATCH_JABBER=2
 . /etc/sysconfig/bandersnatch
 
 # Check that networking is up.
@@ -34,7 +32,7 @@ case "$1" in
 	# Start daemons.
 	if [ ! -f /var/lock/subsys/bandersnatch ]; then
 		msg_starting bandersnatch
-		daemon bandersnatch /etc/bandersnatch/bandersnatch.xml
+		daemon bandersnatch${BANDERSNATCH_JABBER} /etc/bandersnatch/bandersnatch.xml
 		RETVAL=$?
 		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/bandersnatch
 	else
@@ -45,7 +43,7 @@ case "$1" in
 	# Stop daemons.
 	if [ -f /var/lock/subsys/bandersnatch ]; then
 		msg_stopping bandersnatch
-		killproc bandersnatch
+		killproc bandersnatch${BANDERSNATCH_JABBER}
 		rm -f /var/lock/subsys/bandersnatch >/dev/null 2>&1
 	else
 		msg_not_running bandersnatch
@@ -57,7 +55,7 @@ case "$1" in
 	exit $?
 	;;
   status)
-	status bandersnatch
+	status bandersnatch${BANDERSNATCH_JABBER}
 	exit $?
 	;;
   *)

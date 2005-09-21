@@ -1,2 +1,5 @@
 # Nice level
 SERVICE_RUN_NICE_LEVEL="+5"
+
+# jabber 1 or 2
+BANDERSNATCH_JABBER="2"
