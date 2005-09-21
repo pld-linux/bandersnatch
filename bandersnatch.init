@@ -32,7 +32,7 @@ case "$1" in
 	# Start daemons.
 	if [ ! -f /var/lock/subsys/bandersnatch ]; then
 		msg_starting bandersnatch
-		daemon bandersnatch${BANDERSNATCH_JABBER} /etc/bandersnatch/bandersnatch.xml
+		daemon --fork --user nobody bandersnatch${BANDERSNATCH_JABBER} /etc/bandersnatch/bandersnatch.xml
 		RETVAL=$?
 		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/bandersnatch
 	else
