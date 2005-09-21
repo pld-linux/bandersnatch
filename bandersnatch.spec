@@ -15,6 +15,7 @@ Source0:	http://www.funkypenguin.co.za/filestore2/download/5/%{name}-%{version}.
 # Source0-md5:	e49075fce771f7c1ad7ff485eef76231
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
+Patch0:		%{name}-utf8.patch
 URL:		http://www.funkypenguin.co.za/taxonomy/term/5
 BuildRequires:	rpm-perlprov
 BuildArch:	noarch
@@ -37,6 +38,7 @@ bandersnatch web frontend.
 
 %prep
 %setup -q -n %{name}-%{version}.%{_rc}
+%patch0 -p1
 
 %build
 
