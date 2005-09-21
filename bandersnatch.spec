@@ -1,3 +1,8 @@
+# TODO:
+# - user for running daemon + fix perms to config files to be readable
+#   only for daemon user
+# - add deps to frontend
+
 %include        /usr/lib/rpm/macros.perl
 Summary:	Log Jabber conversations to a peer-visible database
 Name:		bandersnatch
