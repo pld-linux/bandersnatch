@@ -1,10 +1,12 @@
 # TODO:
 # - user for running daemon + fix perms to config files to be readable
 #   only for daemon user
+# - nobody MUST NOT own any file!
 # - add deps to frontend
 
 %include        /usr/lib/rpm/macros.perl
 Summary:	Log Jabber conversations to a peer-visible database
+Summary(pl):	Logowanie rozmów przez Jabbera do bazy danych widocznej dla drugiej strony
 Name:		bandersnatch
 %define	_rc	RC1
 Version:	0.4
@@ -18,6 +20,8 @@ Source2:	%{name}.sysconfig
 Patch0:		%{name}-utf8.patch
 URL:		http://www.funkypenguin.co.za/taxonomy/term/5
 BuildRequires:	rpm-perlprov
+Requires(post,preun):	/sbin/chkconfig
+Requires:	rc-scripts
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -26,8 +30,15 @@ Tool to log Jabber instant messaging traffic. Is designed for a
 corporate intranet environment in where the administrators can be
 monitor the use/abuse of their Jabber servers.
 
+%description -l pl
+Narzêdzie do logowania ruchu przez komunikatora Jabber. Zosta³o
+zaprojektowane do u¿ywania w ¶rodowisku sieci korporacyjnych, gdzie
+administratorzy mog± monitorowaæ u¿ywanie/nadu¿ywanie serwerów
+Jabbera.
+
 %package frontend
 Summary:	bandersnatch web frontend
+Summary(pl):	Interfejs WWW dla bandersnatcha
 Group:		Applications/WWW
 Requires:	php-pear-HTML_Template_IT
 Requires:	php-pear-DB
@@ -36,11 +47,12 @@ Requires:	php-pear-Auth
 %description frontend
 bandersnatch web frontend.
 
+%description frontend -l pl
+Interfejs WWW dla bandersnatcha.
+
 %prep
 %setup -q -n %{name}-%{version}.%{_rc}
 %patch0 -p1
-
-%build
 
 %install
 rm -rf $RPM_BUILD_ROOT
