@@ -4,7 +4,7 @@
 #
 # chkconfig:	345 99 01
 # description:	bandersnatch is a jabber logger
-#		
+#
 
 # Source function library.
 . /etc/rc.d/init.d/functions
@@ -47,7 +47,7 @@ case "$1" in
 		rm -f /var/lock/subsys/bandersnatch >/dev/null 2>&1
 	else
 		msg_not_running bandersnatch
-	fi	
+	fi
 	;;
   restart|force-reload)
 	$0 stop
