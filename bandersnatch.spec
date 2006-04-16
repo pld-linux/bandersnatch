@@ -5,10 +5,10 @@
 # - add deps to frontend
 
 %include        /usr/lib/rpm/macros.perl
+%define	_rc	RC1
 Summary:	Log Jabber conversations to a peer-visible database
 Summary(pl):	Logowanie rozmów przez Jabbera do bazy danych widocznej dla drugiej strony
 Name:		bandersnatch
-%define	_rc	RC1
 Version:	0.4
 Release:	0.%{_rc}.1
 License:	GPL
@@ -20,6 +20,7 @@ Source2:	%{name}.sysconfig
 Patch0:		%{name}-utf8.patch
 URL:		http://www.funkypenguin.co.za/taxonomy/term/5
 BuildRequires:	rpm-perlprov
+BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(post,preun):	/sbin/chkconfig
 Requires:	rc-scripts
 BuildArch:	noarch
@@ -40,9 +41,9 @@ Jabbera.
 Summary:	bandersnatch web frontend
 Summary(pl):	Interfejs WWW dla bandersnatcha
 Group:		Applications/WWW
-Requires:	php-pear-HTML_Template_IT
-Requires:	php-pear-DB
 Requires:	php-pear-Auth
+Requires:	php-pear-DB
+Requires:	php-pear-HTML_Template_IT
 
 %description frontend
 bandersnatch web frontend.
@@ -77,17 +78,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/chkconfig --add %{name}
-if [ -r /var/lock/subsys/%{name} ]; then
-	/etc/rc.d/init.d/%{name} restart >&2
-else
-	echo "Run \"/etc/rc.d/init.d/%{name} start\" to start %{name} server."
-fi
+%service %{name} restart
 
 %preun
 if [ "$1" = "0" ]; then
-	if [ -r /var/lock/subsys/%{name} ]; then
-		/etc/rc.d/init.d/%{name} stop >&2
-	fi
+	%service %{name} stop
 	/sbin/chkconfig --del %{name}
 fi
 
@@ -96,7 +91,7 @@ fi
 %doc *.sql doc/*
 %dir %{_sysconfdir}/%{name}
 %attr(755,root,root) %{_sbindir}/*
-%attr(640,root,nobody) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/%{name}.xml
+%attr(640,root,nobody) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/%{name}.xml # FIXME nobody user/group can't own files! -adapter.awk
 %attr(754,root,root) /etc/rc.d/init.d/%{name}
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/%{name}
 
