@@ -1,0 +1,31 @@
+diff -urN bandersnatch-0.4.RC1.org/frontend/templates/default.tpl.htm bandersnatch-0.4.RC1/frontend/templates/default.tpl.htm
+--- bandersnatch-0.4.RC1.org/frontend/templates/default.tpl.htm	2004-04-01 23:03:57.000000000 +0200
++++ bandersnatch-0.4.RC1/frontend/templates/default.tpl.htm	2006-07-26 13:07:15.742789997 +0200
+@@ -2,8 +2,7 @@
+ <html>
+ <head>
+ <title>{PAGE_TITLE}</title>
+-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
++<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <STYLE type=text/css>A {
+ 	FONT-WEIGHT: normal;
+ 	TEXT-DECORATION: none;
+@@ -37,7 +36,7 @@
+ }
+ 
+ </STYLE>
+-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
++<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <STYLE type=text/css>A {
+ 	FONT-WEIGHT: normal;
+ 	TEXT-DECORATION: none;
+@@ -137,7 +136,7 @@
+     <td colspan="2"> 
+       <!-- BEGIN main_page -->
+       <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><head>
+-      <title>{PAGE_TITLE}</title> <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
++      <title>{PAGE_TITLE}</title> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+       <STYLE type=text/css>A {
+ 	FONT-WEIGHT: normal;
+ 	TEXT-DECORATION: none;
