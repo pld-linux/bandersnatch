@@ -91,7 +91,8 @@ fi
 %doc *.sql doc/*
 %dir %{_sysconfdir}/%{name}
 %attr(755,root,root) %{_sbindir}/*
-%attr(640,root,nobody) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/%{name}.xml # FIXME nobody user/group can't own files! -adapter.awk
+%attr(640,root,nobody) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/%{name}.xml
+# FIXME nobody user/group can't own files! -adapter.awk
 %attr(754,root,root) /etc/rc.d/init.d/%{name}
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/%{name}
 
