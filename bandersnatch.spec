@@ -7,7 +7,7 @@
 %include        /usr/lib/rpm/macros.perl
 %define	_rc	RC1
 Summary:	Log Jabber conversations to a peer-visible database
-Summary(pl.UTF-8):   Logowanie rozmów przez Jabbera do bazy danych widocznej dla drugiej strony
+Summary(pl.UTF-8):	Logowanie rozmów przez Jabbera do bazy danych widocznej dla drugiej strony
 Name:		bandersnatch
 Version:	0.4
 Release:	0.%{_rc}.1
@@ -39,7 +39,7 @@ Jabbera.
 
 %package frontend
 Summary:	bandersnatch web frontend
-Summary(pl.UTF-8):   Interfejs WWW dla bandersnatcha
+Summary(pl.UTF-8):	Interfejs WWW dla bandersnatcha
 Group:		Applications/WWW
 Requires:	php-pear-Auth
 Requires:	php-pear-DB
