@@ -7,7 +7,7 @@
 %include        /usr/lib/rpm/macros.perl
 %define	_rc	RC1
 Summary:	Log Jabber conversations to a peer-visible database
-Summary(pl):	Logowanie rozmów przez Jabbera do bazy danych widocznej dla drugiej strony
+Summary(pl.UTF-8):   Logowanie rozmÃ³w przez Jabbera do bazy danych widocznej dla drugiej strony
 Name:		bandersnatch
 Version:	0.4
 Release:	0.%{_rc}.1
@@ -31,15 +31,15 @@ Tool to log Jabber instant messaging traffic. Is designed for a
 corporate intranet environment in where the administrators can be
 monitor the use/abuse of their Jabber servers.
 
-%description -l pl
-Narzêdzie do logowania ruchu przez komunikatora Jabber. Zosta³o
-zaprojektowane do u¿ywania w ¶rodowisku sieci korporacyjnych, gdzie
-administratorzy mog± monitorowaæ u¿ywanie/nadu¿ywanie serwerów
+%description -l pl.UTF-8
+NarzÄ™dzie do logowania ruchu przez komunikatora Jabber. ZostaÅ‚o
+zaprojektowane do uÅ¼ywania w Å›rodowisku sieci korporacyjnych, gdzie
+administratorzy mogÄ… monitorowaÄ‡ uÅ¼ywanie/naduÅ¼ywanie serwerÃ³w
 Jabbera.
 
 %package frontend
 Summary:	bandersnatch web frontend
-Summary(pl):	Interfejs WWW dla bandersnatcha
+Summary(pl.UTF-8):   Interfejs WWW dla bandersnatcha
 Group:		Applications/WWW
 Requires:	php-pear-Auth
 Requires:	php-pear-DB
@@ -48,7 +48,7 @@ Requires:	php-pear-HTML_Template_IT
 %description frontend
 bandersnatch web frontend.
 
-%description frontend -l pl
+%description frontend -l pl.UTF-8
 Interfejs WWW dla bandersnatcha.
 
 %prep
