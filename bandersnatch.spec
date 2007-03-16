@@ -18,7 +18,7 @@ Source0:	http://www.funkypenguin.co.za/filestore2/download/5/%{name}-%{version}.
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 Patch0:		%{name}-utf8.patch
-URL:		http://www.funkypenguin.co.za/taxonomy/term/5
+URL:		http://www.funkypenguin.co.za/bandersnatch/
 BuildRequires:	rpm-perlprov
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(post,preun):	/sbin/chkconfig
