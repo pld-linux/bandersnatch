@@ -4,7 +4,6 @@
 # - nobody MUST NOT own any file!
 # - add deps to frontend
 
-%include        /usr/lib/rpm/macros.perl
 %define	_rc	RC1
 Summary:	Log Jabber conversations to a peer-visible database
 Summary(pl.UTF-8):	Logowanie rozmów przez Jabbera do bazy danych widocznej dla drugiej strony
